@@ -49,9 +49,9 @@ public_users.get('/isbn/:isbn',function (req, res) {
 // Get book details based on author
 public_users.get('/author/:author',function (req, res) {
     const author = req.params.author;
-    const getISBN = Object.keys(books).find(key => books[key].author === author);
+    const getISBN = Object.values(books).filter(value => value.author === author);
     if (getISBN){
-        res.send(books[getISBN]);
+        res.send(getISBN);
     }
     else{
         res.send('Can\'t find the Author');
